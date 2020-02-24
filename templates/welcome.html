@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel = "stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/util.css' %}" type="text/css">
+</head>
+<body>
+Welcome Admin
+{{ email }}
+
+<br>
+<button type="button" onclick="location.href='{% url 'check' %}'" value="check">
+    Check</button>
+    <br>
+<button type="button" onclick="location.href='{% url 'logout' %}'" value="Logout">
+Logout
+</button>
+
+
+
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/map-custom.js' %}"></script>
+</body>
+</html>

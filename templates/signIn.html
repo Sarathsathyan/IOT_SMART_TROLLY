@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel = "stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/util.css' %}" type="text/css">
+    {% comment %}vendor{% endcomment %}
+    <link rel = "stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/fonts/font-awesome.css' %}" type="text/css">
+
+    <link rel = "stylesheet" href="{% static 'css/fonts/font-awesome.min.css' %}" type="text/css">
+    <link rel = "stylesheet" href="{% static 'css/animate/animate.css' %}" type="text/css">
+
+</head>
+<body>
+
+{%  if messg %}
+<script>
+alert('{{ messg }}');
+</script>
+{% endif %}
+{% comment %}<form action="/postSign/" method = 'post'>
+    {% csrf_token %}
+    Email
+    <input type="email" name="email">
+    Password
+    <input type ="password" name="password">
+    <input type="submit" value="SignIn">
+</form>{% endcomment %}
+
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+				</div>
+
+				<form class="login100-form validate-form" action="/postSign/" method = 'post'>
+                    {% csrf_token %}
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="email" name="email" placeholder="Enter email" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" name="password" placeholder="Enter password">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="flex-sb-m w-full p-b-30">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Remember me
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/map-custom.js' %}"></script>
+<script src="{% static 'js/moment.min.js' %}"></script>
+{% comment %}{% endcomment %}
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/popper.js' %}"></script>
+{% comment %}{% endcomment %}
+<script src="{% static 'js/animation/animsition.js' %}"></script>
+<script src="{% static 'js/animation/animsition.min.js' %}"></script>
+{% comment %}{% endcomment %}
+<script src="{% static 'images/icons/favicon.ico' %}"></script>
+
+
+
+</body>
+</html>
