@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static '/images/icons/favicon.ico'%}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fonts/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/shop/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/shop/main.css' %}">
+<!--===============================================================================================-->
+    <style>
+        .butt{
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              margin-left: 1038px;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+<form method="post">  {% csrf_token %}
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Date</th>
+								<th class="column2">Trolly ID</th>
+								<th class="column3">Product ID</th>
+								<th class="column4">Product name</th>
+								<th class="column5">Price</th>
+								<th class="column6">Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td class="column1">{{ now }}</td>
+									<td class="column2">{{ t_id }}</td>
+									<td class="column3">{{ pro_id }}</td>
+									<td class="column4">{{ p_name }}</td>
+									<td class="column5">{{ price }}</td>
+									<td class="column6">{{ total }}</td>
+								</tr>
+
+						</tbody>
+						<th></th>
+						<th></th><th></th><br>
+						<th class="column6">Total </th><th></th>
+                        <th class="column6">{{ total }}</th>
+					</table>
+					<input type="submit" class="butt" value="Conform">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</form>
+
+<!--===============================================================================================-->
+	<script src="{% static 'js/template_js/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/template_js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src=""></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/shop/main.js' %}"></script>
+</body>
+</html>

@@ -5,6 +5,7 @@ from django.contrib import auth
 # Create your views here.
 
 import pyrebase
+import datetime
 
 config = {
     'apiKey': "AIzaSyASO2gO-Vt0I8nl6mtqI9r421L7wHkrgms",
@@ -37,14 +38,11 @@ def postSign(request):
         user = authe.sign_in_with_email_and_password(email, password)
     except:
         message = "Invalid Credentials"
-
         return render(request,"signIn.html",{"messg":message})
     print(user)
     session_id = user['idToken']
 
     request.session['uid'] = str(session_id)
-
-
 
     context ={
         'email' : email,
@@ -55,6 +53,7 @@ def postSign(request):
 def logout(request):
     auth.logout(request)
     return render(request,"signIn.html")
+
 
 
 def check(request):
@@ -72,3 +71,49 @@ def check(request):
     print(itemId)
 
     return render(request,"check.html")
+
+#
+
+def shop(request):
+    idtoken = request.session['uid']
+    a= authe.get_account_info(idtoken)
+    a= a['users']
+    a=a[0]
+    a= a['localId']
+    print(a)
+    trolly_id = db.child('Trolly_ID').shallow().get().val()
+    print("Trolly ID : ")
+    print(trolly_id)
+
+    return render(request,"shop.html",{'trolly_id': trolly_id})
+
+def product(request):
+    now = datetime.date.today()
+    print(now)
+    idtoken = request.session['uid']
+    a = authe.get_account_info(idtoken)
+    a = a['users']
+    a = a[0]
+    a = a['localId']
+    trolly_id = db.child('Trolly_ID').shallow().get().val()
+    prod_id = db.child('Product_ID').shallow().get().val()
+    prod_name =db.child('Product Name').shallow().get().val()
+    price= db.child('Price').shallow().get().val()
+    total = db.child('Total').shallow().get().val()
+    context ={
+        't_id': trolly_id,
+        'pro_id' :prod_id,
+        'p_name' : prod_name,
+        'price' : price,
+        'total' : total,
+        'now' : now
+
+    }
+    product_name = db.child('Example').shallow().get().val()
+    print(product_name)
+    if request.method == 'POST':
+        print('hai')
+        db.child('Trolly_ID').shallow().remove()
+
+
+    return render(request,"product.html",context)
